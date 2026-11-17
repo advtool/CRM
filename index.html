@@ -49,6 +49,7 @@ button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weigh
 <select id="salam"><option>Selamat Pagi</option><option>Selamat Siang</option><option>Selamat Sore</option><option>Selamat Malam</option></select></div>
 <div><label for="pic">Ditujukan ke</label><input id="pic" value="Mas@Soppo"></div>
 </div>
+<label for="jns">Jenis Profiling</label><input id="jns" value="Profiling Baru">
 <label for="kab">Kabupaten/Kota</label><input id="kab" value="Kabupaten Blora">
 <label for="nama">Nama Wajib Pajak/Usaha</label><input id="nama" value="Chanaya Resort">
 <div class="row">
@@ -56,8 +57,10 @@ button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weigh
 <div><label for="app">Aplikasi</label><input id="app" value="Mille"></div>
 </div>
 <label for="met">Metode Pengambilan Data</label>
-<select id="met"><option>User Kasir</option><option>User Admin</option><option>Database</option><option>Printer/Struk</option><option>Lainnya</option></select>
-<label for="pjk">Pajak</label><input id="pjk" value="10% sudah ada di sumber data">
+<select id="met"><option>User Kasir</option><option>Tap Agent</option><option>API</option><option>FTP</option><option>Database</option><option>Printer/Struk</option><option>Lainnya</option></select>
+<label for="pjt">Pajak</label>
+<div class="row"><select id="pjt"><option>Include</option><option>Exclude</option></select>
+<input id="pjk" value="10% sudah ada di sumber data" aria-label="Keterangan pajak (bisa diedit)"></div>
 <label for="lnk">Link Aplikasi</label><input id="lnk" value="https://dashboard.millehub.cxxxx">
 <div class="row">
 <div><label for="usr">User</label><input id="usr" value="Socxxx" autocomplete="off"></div>
@@ -65,10 +68,11 @@ button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weigh
 <div class="pw"><input id="pwd" type="password" value="Chacxxxsx" autocomplete="off"><button type="button" id="tg">Lihat</button></div></div>
 </div>
 <label for="crm">Link CRM</label><input id="crm" value="https://dasmantap.tappingbox.com/assistance/32557">
+<label for="ket">Keterangan</label><textarea id="ket" rows="2" placeholder="Opsional, tampil setelah Link CRM"></textarea>
 <label for="strk">Contoh Struk (gambar)</label>
 <input id="strk" type="file" accept="image/*">
 <img id="img" alt="Pratinjau contoh struk">
-<p class="hint">Gambar struk akan diberi judul “Contoh Struk” saat diunduh. Gunakan tombol Gambar Info dan Gambar Struk untuk mengunduh gambar, lalu kirim ke WhatsApp.</p>
+<p class="hint">Gambar struk akan diberi judul “Contoh Struk” saat diunduh. Gunakan tombol Download Hasil Struk untuk mengunduh gambar, lalu kirim ke WhatsApp.</p>
 <label for="pen">Penutup</label>
 <textarea id="pen" rows="2">Terimakasih Semoga Keberkahan Menyertai kita Semua</textarea>
 </section>
@@ -79,8 +83,7 @@ button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weigh
 <div class="acts">
 <button class="p" id="cp" type="button">Salin Pesan</button>
 <button id="wa" type="button">Buka WhatsApp</button>
-<button id="d1" type="button">Gambar Info</button>
-<button id="d3" type="button">Gambar Struk</button>
+<button id="d3" type="button">Download Hasil Struk</button>
 <button id="rs" type="button">Kosongkan</button>
 </div>
 <p class="hint" id="st" aria-live="polite"></p>
@@ -90,29 +93,29 @@ button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weigh
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
-var ids=["salam","pic","kab","nama","dev","app","met","pjk","lnk","usr","pwd","crm","pen"];
+var ids=["salam","pic","jns","kab","nama","dev","app","met","pjk","lnk","usr","pwd","crm","ket","pen"];
 var h=new Date().getHours();
 $("salam").selectedIndex=h<11?0:h<15?1:h<18?2:3;
 function build(){
 var v={};ids.forEach(function(i){v[i]=$(i).value.trim()||"-"});
-var pen=$("pen").value.trim();
+var pen=$("pen").value.trim();var ket=$("ket").value.trim();
 var hasImg=$("strk").files&&$("strk").files.length;
 var bar="━━━━━━━━━━━━━━━";
 function kv(e,l,x,m){return e+" *"+l+"* : "+(m?"```"+x+"```":x)}
 var L=[
 v.salam+" "+v.pic+" 🙏",
-"Mohon dibantu *Profiling Baru Wajib Pajak* "+v.kab+". Berikut detailnya:",
+"Mohon dibantu *"+v.jns+" Wajib Pajak* "+v.kab+". Berikut detailnya:",
 "",bar,"📋 *INFORMASI PROFILING / REKUES CRM*",bar,"",
 "🏢 *"+v.nama+"*","",
 kv("🔖","Device ID",v.dev,1),
 kv("📱","Aplikasi",v.app),
 kv("🗂️","Metode Pengambilan Data",v.met),
-kv("💰","Pajak",v.pjk),
+kv("💰","Pajak",$("pjt").value+($("pjk").value.trim()?" ("+$("pjk").value.trim()+")":"")),
 "","🔐 *Akses Aplikasi*",
 kv("🔗","Link",v.lnk),
 kv("👤","User",v.usr,1),
 kv("🔑","Password",v.pwd,1),
-"","🌐 *Link CRM*",v.crm,
+"","🌐 *Link CRM*",v.crm,"","📝 *Keterangan*",ket||"-",
 "","🧾 *Contoh Struk*",
 hasImg?"Terlampir pada gambar di bawah 👇":"Bisa upload gambar struk"
 ];
@@ -154,6 +157,7 @@ return L.join("\n");
 function render(){var d=new Date();var tm=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);$("out").innerHTML=fmt(build())+'<span class="tm">'+tm+' ✓✓</span>'}
 ids.forEach(function(i){$(i).addEventListener("input",render)});
 $("salam").addEventListener("change",render);$("met").addEventListener("change",render);
+$("pjt").addEventListener("change",function(){var d=["10% sudah ada di sumber data","10% belum ada di sumber data"],p=$("pjk");if(!p.value.trim()||d.indexOf(p.value.trim())>-1)p.value=this.value==="Include"?d[0]:d[1];render()});
 $("tg").onclick=function(){var p=$("pwd");var s=p.type==="password";p.type=s?"text":"password";this.textContent=s?"Sembunyi":"Lihat"};
 $("strk").addEventListener("change",function(){
 var f=this.files[0],im=$("img");
@@ -242,10 +246,9 @@ else{var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=
 },'image/png')})}
 function dlInfo(){return saveCanvas(infoCanvas(),'rekues-'+slug()+'.png')}
 function dlStruk(){return strukCanvas().then(function(cv){return cv?saveCanvas(cv,'contoh-struk-'+slug()+'.png'):null})}
-$('d1').onclick=dlInfo;
 $('d3').onclick=dlStruk;
 $("rs").onclick=function(){
-ids.forEach(function(i){if(i!=="salam"&&i!=="pen"&&i!=="met")$(i).value=""});
+ids.forEach(function(i){if(i!=="salam"&&i!=="pen"&&i!=="met"&&i!=="jns")$(i).value=""});
 $("strk").value="";$("img").style.display="none";render();say("Formulir dikosongkan.");
 };
 render();
