@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tool Rekues Profiling WP</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--tx:#1b1f24;--mu:#5d6772;--bd:#d9dde3;--ac:#0f766e;--acx:#fff;--wa:#dcf8c6;--wat:#111;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171a;--card:#1e2328;--tx:#e8ebee;--mu:#9aa5b0;--bd:#343c44;--ac:#2dd4bf;--acx:#06201d;--wa:#054740;--wat:#e8f5f2}}
+:root[data-theme="dark"]{--bg:#14171a;--card:#1e2328;--tx:#e8ebee;--mu:#9aa5b0;--bd:#343c44;--ac:#2dd4bf;--acx:#06201d;--wa:#054740;--wat:#e8f5f2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px;display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:820px){.wrap{grid-template-columns:1fr 1fr;align-items:start}header{grid-column:1/-1}}
+h1{font-size:22px;margin:0 0 4px}header p{margin:0;color:var(--mu)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px}
+.card h2{font-size:15px;margin:0 0 12px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+label:first-of-type{margin-top:0}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pw{display:flex;gap:6px}.pw button{white-space:nowrap}
+button{font:inherit;padding:9px 14px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chat{background:color-mix(in srgb,var(--bg) 78%,var(--ac) 10%);border:1px solid var(--bd);border-radius:12px;padding:16px 12px;max-height:68vh;overflow:auto}
+.bubble{position:relative;background:var(--wa);color:var(--wat);border-radius:0 12px 12px 12px;padding:10px 12px 22px;max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px;line-height:1.5;box-shadow:0 1px 1px rgba(0,0,0,.12);min-height:120px}
+.bubble::before{content:"";position:absolute;top:0;left:-7px;border-style:solid;border-width:0 8px 8px 0;border-color:transparent var(--wa) transparent transparent}
+.bubble b{font-weight:700}.bubble a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.bubble code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(127,127,127,.18);padding:1px 5px;border-radius:5px}
+.tm{position:absolute;right:10px;bottom:5px;font-size:11px;opacity:.6}
+#img{max-width:100%;border-radius:8px;margin-top:10px;display:none;border:1px solid var(--bd)}
+.hint{font-size:12px;color:var(--mu);margin-top:6px}
+.sticky{position:sticky;top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Tool Rekues Profiling Wajib Pajak</h1>
+<p>Isi formulir, pesan siap salin ke WhatsApp terbentuk otomatis.</p>
+</header>
+
+<section class="card">
+<h2>Data Rekues</h2>
+<div class="row">
+<div><label for="salam">Salam</label>
+<select id="salam"><option>Selamat Pagi</option><option>Selamat Siang</option><option>Selamat Sore</option><option>Selamat Malam</option></select></div>
+<div><label for="pic">Ditujukan ke</label><input id="pic" value="Mas@Soppo"></div>
+</div>
+<label for="kab">Kabupaten/Kota</label><input id="kab" value="Kabupaten Blora">
+<label for="nama">Nama Wajib Pajak/Usaha</label><input id="nama" value="Chanaya Resort">
+<div class="row">
+<div><label for="dev">Device ID</label><input id="dev" value="AKBB08760"></div>
+<div><label for="app">Aplikasi</label><input id="app" value="Mille"></div>
+</div>
+<label for="met">Metode Pengambilan Data</label>
+<select id="met"><option>User Kasir</option><option>User Admin</option><option>Database</option><option>Printer/Struk</option><option>Lainnya</option></select>
+<label for="pjk">Pajak</label><input id="pjk" value="10% sudah ada di sumber data">
+<label for="lnk">Link Aplikasi</label><input id="lnk" value="https://dashboard.millehub.cxxxx">
+<div class="row">
+<div><label for="usr">User</label><input id="usr" value="Socxxx" autocomplete="off"></div>
+<div><label for="pwd">Password</label>
+<div class="pw"><input id="pwd" type="password" value="Chacxxxsx" autocomplete="off"><button type="button" id="tg">Lihat</button></div></div>
+</div>
+<label for="crm">Link CRM</label><input id="crm" value="https://dasmantap.tappingbox.com/assistance/32557">
+<label for="strk">Contoh Struk (gambar)</label>
+<input id="strk" type="file" accept="image/*">
+<img id="img" alt="Pratinjau contoh struk">
+<p class="hint">Gambar struk akan diberi judul “Contoh Struk” saat diunduh. Gunakan tombol Gambar Info dan Gambar Struk untuk mengunduh gambar, lalu kirim ke WhatsApp.</p>
+<label for="pen">Penutup</label>
+<textarea id="pen" rows="2">Terimakasih Semoga Keberkahan Menyertai kita Semua</textarea>
+</section>
+
+<section class="card sticky">
+<h2>Pratinjau Pesan</h2>
+<div class="chat"><div class="bubble" id="out"></div></div>
+<div class="acts">
+<button class="p" id="cp" type="button">Salin Pesan</button>
+<button id="wa" type="button">Buka WhatsApp</button>
+<button id="d1" type="button">Gambar Info</button>
+<button id="d3" type="button">Gambar Struk</button>
+<button id="rs" type="button">Kosongkan</button>
+</div>
+<p class="hint" id="st" aria-live="polite"></p>
+</section>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ids=["salam","pic","kab","nama","dev","app","met","pjk","lnk","usr","pwd","crm","pen"];
+var h=new Date().getHours();
+$("salam").selectedIndex=h<11?0:h<15?1:h<18?2:3;
+function build(){
+var v={};ids.forEach(function(i){v[i]=$(i).value.trim()||"-"});
+var pen=$("pen").value.trim();
+var hasImg=$("strk").files&&$("strk").files.length;
+var bar="━━━━━━━━━━━━━━━";
+function kv(e,l,x,m){return e+" *"+l+"* : "+(m?"```"+x+"```":x)}
+var L=[
+v.salam+" "+v.pic+" 🙏",
+"Mohon dibantu *Profiling Baru Wajib Pajak* "+v.kab+". Berikut detailnya:",
+"",bar,"📋 *INFORMASI PROFILING / REKUES CRM*",bar,"",
+"🏢 *"+v.nama+"*","",
+kv("🔖","Device ID",v.dev,1),
+kv("📱","Aplikasi",v.app),
+kv("🗂️","Metode Pengambilan Data",v.met),
+kv("💰","Pajak",v.pjk),
+"","🔐 *Akses Aplikasi*",
+kv("🔗","Link",v.lnk),
+kv("👤","User",v.usr,1),
+kv("🔑","Password",v.pwd,1),
+"","🌐 *Link CRM*",v.crm,
+"","🧾 *Contoh Struk*",
+hasImg?"Terlampir pada gambar di bawah 👇":"Bisa upload gambar struk"
+];
+if(pen){L.push("",bar,"_*"+pen+"*_")}
+return L.join("\n");
+}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function fmt(t){
+var m=[];
+t=esc(t).replace(/```([\s\S]+?)```/g,function(_,c){m.push(c);return "\u0000"+(m.length-1)+"\u0000"});
+t=t.replace(/(^|[\s(])\*([^*\n]+)\*(?=$|[\s.,!?:;)_])/gm,"$1<b>$2</b>");
+t=t.replace(/(^|[\s(])_([^_\n]+)_(?=$|[\s.,!?:;)])/gm,"$1<i>$2</i>");
+t=t.replace(/\u0000(\d+)\u0000/g,function(_,i){return "<code>"+m[i]+"</code>"});
+return t.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+function _legacy(){
+var v={};ids.forEach(function(i){v[i]=$(i).value.trim()});
+var hasImg=$("strk").files&&$("strk").files.length;
+var L=[];
+L.push(v.salam+" "+v.pic+" Mohon dibantu Profiling Baru Wajib Pajak "+v.kab+" Berikut detailnya:");
+L.push("");
+L.push("*Informasi Profiling/Rekues CRM*");
+L.push("");
+L.push("*"+v.nama+"*");
+L.push("");
+L.push("*Device ID :* "+v.dev);
+L.push("*Aplikasi:* "+v.app);
+L.push("*Metode Pengambilan Data:* "+v.met);
+L.push("*Pajak:* "+v.pjk);
+L.push("*Link Aplikasi:* "+v.lnk);
+L.push("*User:* "+v.usr);
+L.push("*Password:* "+v.pwd);
+L.push("_*Link Crm*_: "+v.crm);
+L.push("contoh struk : "+(hasImg?"terlampir (gambar)":"bisa upload gambar struk"));
+L.push("");
+if(v.pen)L.push("_*"+v.pen+"*_");
+return L.join("\n");
+}
+function render(){var d=new Date();var tm=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);$("out").innerHTML=fmt(build())+'<span class="tm">'+tm+' ✓✓</span>'}
+ids.forEach(function(i){$(i).addEventListener("input",render)});
+$("salam").addEventListener("change",render);$("met").addEventListener("change",render);
+$("tg").onclick=function(){var p=$("pwd");var s=p.type==="password";p.type=s?"text":"password";this.textContent=s?"Sembunyi":"Lihat"};
+$("strk").addEventListener("change",function(){
+var f=this.files[0],im=$("img");
+if(f){var r=new FileReader();r.onload=function(e){im.src=e.target.result;im.style.display="block"};r.readAsDataURL(f)}
+else{im.style.display="none"}
+render();
+});
+function say(t){$("st").textContent=t;setTimeout(function(){$("st").textContent=""},2500)}
+$("cp").onclick=function(){
+var t=build();
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(t).then(function(){say("Pesan tersalin.")},fb)}else fb();
+function fb(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();
+try{document.execCommand("copy");say("Pesan tersalin.")}catch(e){say("Gagal menyalin, salin manual dari pratinjau.")}
+document.body.removeChild(a)}
+};
+$("wa").onclick=function(){window.open("https://wa.me/?text="+encodeURIComponent(build()),"_blank","noopener")};
+var DL=null;
+if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){DL=d}).catch(function(){})}
+var SANS='system-ui,Segoe UI,Roboto,sans-serif',MONO='ui-monospace,Menlo,Consolas,monospace';
+function fnt(s,px){if(s==='m')return(px-3)+'px '+MONO;return(s==='bi'?'italic bold ':s==='b'?'bold ':'')+px+'px '+SANS}
+function slug(){return($('nama').value.trim()||'wp').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'wp'}
+function toks(line){var out=[],re=/```([\s\S]+?)```|_\*(.+?)\*_|\*([^*]+)\*/g,last=0,m;
+while((m=re.exec(line))){if(m.index>last)out.push({t:line.slice(last,m.index),s:''});
+if(m[1]!==undefined)out.push({t:m[1],s:'m'});else if(m[2]!==undefined)out.push({t:m[2],s:'bi'});else out.push({t:m[3],s:'b'});
+last=re.lastIndex}
+if(last<line.length)out.push({t:line.slice(last),s:''});return out}
+function infoCanvas(){
+var px=28,W=860,pad=50,lh=Math.round(px*1.6),c=document.createElement('canvas').getContext('2d'),ops=[],x=0,y=lh;
+build().split('\n').forEach(function(line){
+if(line===''){y+=Math.round(lh*.55);return}
+x=0;
+toks(line).forEach(function(k){
+c.font=fnt(k.s,px);
+k.t.split(/(\s+)/).forEach(function(w){
+if(!w)return;
+var sp=/^\s+$/.test(w);
+if(sp&&x===0)return;
+var ww=c.measureText(w).width;
+if(!sp&&x>0&&x+ww>W){y+=lh;x=0}
+if(ww>W){w.split('').forEach(function(ch){var cw=c.measureText(ch).width;if(x+cw>W){y+=lh;x=0}ops.push({x:x,y:y,t:ch,s:k.s,w:cw});x+=cw});return}
+ops.push({x:x,y:y,t:w,s:k.s,w:ww});x+=ww;
+});
+});
+y+=lh;
+});
+var cv=document.createElement('canvas');cv.width=W+pad*2;cv.height=Math.ceil(y+20-lh*.35);
+var g=cv.getContext('2d');
+g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height);
+g.fillStyle='#0f766e';g.fillRect(0,0,cv.width,14);
+g.textBaseline='alphabetic';
+ops.forEach(function(o){
+g.font=fnt(o.s,px);
+if(o.s==='m'){g.fillStyle='#eceff1';g.fillRect(pad+o.x-4,o.y+20-px*.9,o.w+8,px*1.2)}
+g.fillStyle='#1b1f24';g.fillText(o.t,pad+o.x,o.y+20);
+});
+return cv}
+function strukCanvas(){
+return new Promise(function(res){
+var f=$('strk').files&&$('strk').files[0];
+if(!f){say('Unggah gambar struk terlebih dahulu.');return res(null)}
+var im=new Image(),u=URL.createObjectURL(f);
+im.onerror=function(){say('Gambar struk tidak bisa dibaca.');res(null)};
+im.onload=function(){
+var W=900,pad=40,hh=120,s=Math.min((W-pad*2)/im.width,2);
+var iw=im.width*s,ih=im.height*s;
+if(ih>1800){s=1800/im.height;iw=im.width*s;ih=1800}
+var cv=document.createElement('canvas');cv.width=W;cv.height=Math.ceil(hh+pad+ih+pad);
+var g=cv.getContext('2d');
+g.fillStyle='#fff';g.fillRect(0,0,W,cv.height);
+g.fillStyle='#0f766e';g.fillRect(0,0,W,hh);
+g.fillStyle='#fff';g.textBaseline='alphabetic';
+g.font='bold 46px '+SANS;g.fillText('Contoh Struk',pad,64);
+g.font='26px '+SANS;g.fillText($('nama').value.trim(),pad,100);
+var ix=(W-iw)/2,iy=hh+pad;
+g.strokeStyle='#d9dde3';g.lineWidth=2;g.strokeRect(ix-1,iy-1,iw+2,ih+2);
+g.drawImage(im,ix,iy,iw,ih);
+URL.revokeObjectURL(u);res(cv)};
+im.src=u})}
+function saveCanvas(cv,name){
+return new Promise(function(res){
+cv.toBlob(function(b){
+if(!b){say('Gagal membuat gambar.');return res()}
+if(DL){DL.save({filename:name,data:b}).then(function(){say('Gambar disimpan: '+name)},function(e){if(!e||e.code!=='declined')say('Gagal menyimpan gambar.')}).then(res)}
+else{var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);say('Gambar diunduh: '+name);res()}
+},'image/png')})}
+function dlInfo(){return saveCanvas(infoCanvas(),'rekues-'+slug()+'.png')}
+function dlStruk(){return strukCanvas().then(function(cv){return cv?saveCanvas(cv,'contoh-struk-'+slug()+'.png'):null})}
+$('d1').onclick=dlInfo;
+$('d3').onclick=dlStruk;
+$("rs").onclick=function(){
+ids.forEach(function(i){if(i!=="salam"&&i!=="pen"&&i!=="met")$(i).value=""});
+$("strk").value="";$("img").style.display="none";render();say("Formulir dikosongkan.");
+};
+render();
+})();
+</script>
+</body>
+</html>
